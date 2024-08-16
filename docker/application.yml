@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    image: your-app-image
+    environment:
+      DATABASE_URL: postgres://youruser:yourpassword@postgres:5432/yourdb
+      KAFKA_BROKER: kafka:9092
+      TOPIC_NAME: my_topic
+    ports:
+      - "8000:8000" # or any other port your app is running on
+    #depends_on:
+    # - postgres
+    # - kafka
