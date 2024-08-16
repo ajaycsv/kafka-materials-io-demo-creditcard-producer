@@ -1,14 +1,25 @@
-spring:
-  application:
-    name:kafka-creditcard-producer
 
 server:
   port:9090
 #server.servlet.context-path=/api/
 
 spring:
+  application:
+    name:kafka-creditcard-producer
+
   zipkin:
     base-url:http://localhost:9411/
+
+# All traces should be sent to latency analysis tool
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+
+# traceID and spanId are predefined MDC keys - we want the logs to include them
+#logging:
+#  pattern:
+#    level : [${spring.application.name:},%X{traceId:-},%X{spanId:-}]
 
   kafka:
     producer:
