@@ -3,8 +3,6 @@ package com.materials.io.kafkaproducer.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -14,9 +12,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public class JWTUtility implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class JWTUtility {
 
     //TODO: move to config store
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
@@ -58,7 +54,6 @@ public class JWTUtility implements Serializable {
     }
 
 
-    //while creating the token -
     //1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID
     //2. Sign the JWT using the HS512 algorithm and secret key.
     private String doGenerateToken(Map<String, Object> claims, String subject) {
