@@ -3,6 +3,7 @@ package com.materials.io.kafkaproducer.config;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
 import com.materials.io.kafkaproducerconsumer.model.CreditCardTransaction;
+import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -28,5 +29,10 @@ public class KafkaConfig {
     @Bean
     public KafkaTemplate<String, CreditCardTransaction> kafkaTemplate(){
         return new KafkaTemplate<String, CreditCardTransaction>(producerFactory());
+    }
+
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
     }
 }
