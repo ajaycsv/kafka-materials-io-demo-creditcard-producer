@@ -19,11 +19,14 @@ spring:
   zipkin:
     base-url:http://localhost:9411/
 
-  security:
-    user:
-      name: ajay
-      password : vikas
+security:
+  jwt:
+    secret-key: iomaterials_secrettoken_code_jwttoken
+    token-duration: 1M
 
+#logging:
+#  level:
+#    org.springframework: debug
 # All traces should be sent to latency analysis tool
 management:
   tracing:
